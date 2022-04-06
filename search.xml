@@ -64,12 +64,8 @@
 <img src="EOF9.png" width=500/>
 
 <p>其中 $V_j$ 就称为 <strong>X</strong> 的EOF第 <strong>j</strong> 模态，$Z_j$ 就称为第 <strong>j</strong> 模态的时间序列</p>
-<h2 id="2-EOF分解的计算"><a href="#2-EOF分解的计算" class="headerlink" title="2.EOF分解的计算"></a>2.EOF分解的计算</h2><p>我们知道</p>
-<img src="EOF10.png" width=300/>
-
-<p>令</p>
-<img src="EOF11.png" width=200/>
-
+<h2 id="2-EOF分解的计算"><a href="#2-EOF分解的计算" class="headerlink" title="2.EOF分解的计算"></a>2.EOF分解的计算</h2><p>我们知道 $XX^T &#x3D; VZZ^TV^T$</p>
+<p>令 $A &#x3D; XX^T$</p>
 <p>显然矩阵 $A_{m{\times}m}$ 是一个实对称矩阵，由实对称矩阵的性质， $A_{m{\times}m}$ 可被正交相似对角化</p>
 <p>即存在正交矩阵 $P_{m{\times}m}$ 使得 $P^TAP &#x3D; \Lambda$, 其中 $\Lambda_{m{\times}m}$ 为矩阵 $X_{m{\times}n}$ 特征值组成的对角矩阵</p>
 <img src="EOF12.png" width=300/>
@@ -88,7 +84,8 @@
 <img src="EOF14.png" width=300/>
 
 <p>也即<strong>“正交”</strong>的由来</p>
-<p>对于$X \approx \hat{X} &#x3D; V_{m{\times}p} \times Z_{p{\times}n}$, $\hat{X}$为拟合场</p>
+<p>对于$X \approx \hat{X} &#x3D; V_{m{\times}p} \times Z_{p{\times}n}$</p>
+<p>$\hat{X}$为拟合场</p>
 <p>可以证明其误差为</p>
 <img src="EOF15.png" width=300/>
 

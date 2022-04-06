@@ -20,36 +20,6 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"syqia.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.11.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="1.详细介绍EOF分析方法（也称PCA主成分分析）经验正交函数（Empirical Orthogonal Functions，EOFs）方法最早是由统计学家Pearson在1902年提出的，之后由Lorenz（1956）引入气象问题分析当中。机器学习领域常称作主成分分析（Principal Component Analysis，PCA）。 EOF分析是将一个气象场分解为一个空间函数和一个时间函数的">
-<meta property="og:type" content="article">
-<meta property="og:title" content="EOF分析（PCA主成分分析）">
-<meta property="og:url" content="https://syqia.github.io/2022/04/06/2022-04-06-EOF/index.html">
-<meta property="og:site_name" content="喜欢稀饭的气象爱好者">
-<meta property="og:description" content="1.详细介绍EOF分析方法（也称PCA主成分分析）经验正交函数（Empirical Orthogonal Functions，EOFs）方法最早是由统计学家Pearson在1902年提出的，之后由Lorenz（1956）引入气象问题分析当中。机器学习领域常称作主成分分析（Principal Component Analysis，PCA）。 EOF分析是将一个气象场分解为一个空间函数和一个时间函数的">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://syqia.github.io/2022/04/06/2022-04-06-EOF/EOF1.png">
-<meta property="og:image" content="https://syqia.github.io/2022/04/06/2022-04-06-EOF/EOF2.png">
-<meta property="og:image" content="https://syqia.github.io/2022/04/06/2022-04-06-EOF/EOF3.png">
-<meta property="og:image" content="https://syqia.github.io/2022/04/06/2022-04-06-EOF/EOF4.png">
-<meta property="og:image" content="https://syqia.github.io/2022/04/06/2022-04-06-EOF/EOF5.png">
-<meta property="og:image" content="https://syqia.github.io/2022/04/06/2022-04-06-EOF/EOF6.png">
-<meta property="og:image" content="https://syqia.github.io/2022/04/06/2022-04-06-EOF/EOF7.png">
-<meta property="og:image" content="https://syqia.github.io/2022/04/06/2022-04-06-EOF/EOF8.png">
-<meta property="og:image" content="https://syqia.github.io/2022/04/06/2022-04-06-EOF/EOF9.png">
-<meta property="og:image" content="https://syqia.github.io/2022/04/06/2022-04-06-EOF/EOF10.png">
-<meta property="og:image" content="https://syqia.github.io/2022/04/06/2022-04-06-EOF/EOF11.png">
-<meta property="og:image" content="https://syqia.github.io/2022/04/06/2022-04-06-EOF/EOF12.png">
-<meta property="og:image" content="https://syqia.github.io/2022/04/06/2022-04-06-EOF/EOF13.png">
-<meta property="og:image" content="https://syqia.github.io/2022/04/06/2022-04-06-EOF/EOF14.png">
-<meta property="og:image" content="https://syqia.github.io/2022/04/06/2022-04-06-EOF/EOF15.png">
-<meta property="og:image" content="https://syqia.github.io/2022/04/06/2022-04-06-EOF/EOF16.png">
-<meta property="og:image" content="https://syqia.github.io/2022/04/06/2022-04-06-EOF/EOF17.png">
-<meta property="article:published_time" content="2022-04-06T09:15:22.000Z">
-<meta property="article:modified_time" content="2022-04-06T15:22:08.470Z">
-<meta property="article:author" content="SY Qian">
-<meta property="article:tag" content="EOF">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://syqia.github.io/2022/04/06/2022-04-06-EOF/EOF1.png">
 
 
 <link rel="canonical" href="https://syqia.github.io/2022/04/06/2022-04-06-EOF/">
@@ -194,16 +164,24 @@
       </div>
   </nav>
 </div>
-  <div class="links-of-author site-overview-item animated">
-      <span class="links-of-author-item">
-        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://markdown.com.cn/" title="https:&#x2F;&#x2F;markdown.com.cn&#x2F;" rel="noopener" target="_blank">MarkDown</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.bootcss.com/" title="https:&#x2F;&#x2F;hexo.bootcss.com&#x2F;" rel="noopener" target="_blank">Hexo</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/iissnan/hexo-theme-next" title="https:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next" rel="noopener" target="_blank">Next</a>
+        </li>
+    </ul>
   </div>
-
-
 
         </div>
       </div>
@@ -266,7 +244,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-04-06 17:15:22 / 修改时间：23:22:08" itemprop="dateCreated datePublished" datetime="2022-04-06T17:15:22+08:00">2022-04-06</time>
+      <time title="创建时间：2022-04-06 17:15:22 / 修改时间：23:31:28" itemprop="dateCreated datePublished" datetime="2022-04-06T17:15:22+08:00">2022-04-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -318,12 +296,8 @@
 <img src="EOF9.png" width=500/>
 
 <p>其中 $V_j$ 就称为 <strong>X</strong> 的EOF第 <strong>j</strong> 模态，$Z_j$ 就称为第 <strong>j</strong> 模态的时间序列</p>
-<h2 id="2-EOF分解的计算"><a href="#2-EOF分解的计算" class="headerlink" title="2.EOF分解的计算"></a>2.EOF分解的计算</h2><p>我们知道</p>
-<img src="EOF10.png" width=300/>
-
-<p>令</p>
-<img src="EOF11.png" width=200/>
-
+<h2 id="2-EOF分解的计算"><a href="#2-EOF分解的计算" class="headerlink" title="2.EOF分解的计算"></a>2.EOF分解的计算</h2><p>我们知道 $XX^T &#x3D; VZZ^TV^T$</p>
+<p>令 $A &#x3D; XX^T$</p>
 <p>显然矩阵 $A_{m{\times}m}$ 是一个实对称矩阵，由实对称矩阵的性质， $A_{m{\times}m}$ 可被正交相似对角化</p>
 <p>即存在正交矩阵 $P_{m{\times}m}$ 使得 $P^TAP &#x3D; \Lambda$, 其中 $\Lambda_{m{\times}m}$ 为矩阵 $X_{m{\times}n}$ 特征值组成的对角矩阵</p>
 <img src="EOF12.png" width=300/>
@@ -342,7 +316,8 @@
 <img src="EOF14.png" width=300/>
 
 <p>也即<strong>“正交”</strong>的由来</p>
-<p>对于$X \approx \hat{X} &#x3D; V_{m{\times}p} \times Z_{p{\times}n}$, $\hat{X}$为拟合场</p>
+<p>对于$X \approx \hat{X} &#x3D; V_{m{\times}p} \times Z_{p{\times}n}$</p>
+<p>$\hat{X}$为拟合场</p>
 <p>可以证明其误差为</p>
 <img src="EOF15.png" width=300/>
 
