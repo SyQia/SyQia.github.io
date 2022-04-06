@@ -35,7 +35,7 @@
     <title>EOF分析（PCA主成分分析）</title>
     <url>/2022/04/06/2022-04-06-EOF/</url>
     <content><![CDATA[<h2 id="1-详细介绍EOF分析方法（也称PCA主成分分析）"><a href="#1-详细介绍EOF分析方法（也称PCA主成分分析）" class="headerlink" title="1.详细介绍EOF分析方法（也称PCA主成分分析）"></a>1.详细介绍EOF分析方法（也称PCA主成分分析）</h2><p>经验正交函数（Empirical Orthogonal Functions，EOFs）方法最早是由统计学家Pearson在1902年提出的，之后由Lorenz（1956）引入气象问题分析当中。机器学习领域常称作主成分分析（Principal Component Analysis，PCA）。</p>
-<p>EOF分析是将一个气象场分解为一个空间函数和一个时间函数的乘积，即 <strong>X = VZ</strong> 的形式<br>其中，<strong>X</strong> 是气象场，<strong>V</strong> 是空间函数，<strong>Z</strong> 是时间函数</p>
+<p>EOF分析是将一个气象场分解为一个空间函数和一个时间函数的乘积，即 <strong>X &#x3D; VZ</strong> 的形式<br>其中，<strong>X</strong> 是气象场，<strong>V</strong> 是空间函数，<strong>Z</strong> 是时间函数</p>
 <span id="more"></span>
 <p>如果我们将一个气象场的多次观测值记为</p>
 <img src="EOF1.png" width=256/>
@@ -44,10 +44,10 @@
 <img src="EOF2.png" width=256/>
 <img src="EOF3.png" width=256/>
 
-<p>使得 <strong>X = VZ</strong>， 即</p>
+<p>使得 <strong>X &#x3D; VZ</strong>， 即</p>
 <img src="EOF4.png" width=400/>
 
-<p>其中 <em><strong>i = 1,2,…,m</strong></em> <em><strong>t = 1,2,…,n</strong></em> 表示变量场中第 <em><strong>i</strong></em> 个格点上的第 <em><strong>t</strong></em> 次观测值，可以看做是p个空间函数 $v_{ik}$ 和时间函数 $z_{ki}$ 的线性组合</p>
+<p>其中 <em><strong>i &#x3D; 1,2,…,m</strong></em> <em><strong>t &#x3D; 1,2,…,n</strong></em> 表示变量场中第 <em><strong>i</strong></em> 个格点上的第 <em><strong>t</strong></em> 次观测值，可以看做是p个空间函数 $v_{ik}$ 和时间函数 $z_{ki}$ 的线性组合</p>
 <p>因此 <strong>t</strong> 时刻的空间场可以表示为</p>
 <img src="EOF5.png" width=400/>
 
@@ -61,7 +61,7 @@
 <img src="EOF8.png" width=300/>
 
 <p>那么我们就得到气象场的表达式为</p>
-<img src="EOF9.png" width=400/>
+<img src="EOF9.png" width=500/>
 
 <p>其中 $V_j$ 就称为 <strong>X</strong> 的EOF第 <strong>j</strong> 模态，$Z_j$ 就称为第 <strong>j</strong> 模态的时间序列</p>
 <h2 id="2-EOF分解的计算"><a href="#2-EOF分解的计算" class="headerlink" title="2.EOF分解的计算"></a>2.EOF分解的计算</h2><p>我们知道</p>
@@ -71,14 +71,14 @@
 <img src="EOF11.png" width=200/>
 
 <p>显然矩阵 $A_{m{\times}m}$ 是一个实对称矩阵，由实对称矩阵的性质， $A_{m{\times}m}$ 可被正交相似对角化</p>
-<p>即存在正交矩阵 $P_{m{\times}m}$ 使得 $P^TAP = \Lambda$, 其中 $\Lambda_{m{\times}m}$ 为矩阵 $X_{m{\times}n}$ 特征值组成的对角矩阵</p>
+<p>即存在正交矩阵 $P_{m{\times}m}$ 使得 $P^TAP &#x3D; \Lambda$, 其中 $\Lambda_{m{\times}m}$ 为矩阵 $X_{m{\times}n}$ 特征值组成的对角矩阵</p>
 <img src="EOF12.png" width=300/>
 
 <p>计算矩阵 $A_{m{\times}m}$ 的特征值 $\lambda_{1,…,m}$ 以及特征向量 $V_{m{\times}m}$</p>
 <p>将特征向量 $V_{m{\times}m}$ 按特征值从大到小排序，第一个特征向量，也即 $V_{m{\times}m}$ 的第1列为<label style="color:red">第1个EOF模态</label></p>
 <p>以此类推，第 <em><strong>2,3,…,p</strong></em> 列对应<label style="color:red">第p个EOF模态</label></p>
-<p>我们将特征向量 $V_{m{\times}m}$ 作为气象场 $X_{m{\times}n}$ 的空间函数</p>
-<p>那么，气象场 $X_{m{\times}n}$ 的时间矩阵 $Z_{m{\times}n} = V_{m{\times}m}^T{\times}X_{m{\times}n}$</p>
+<p><label style="color:blue">我们将特征向量 $V_{m{\times}m}$ 定义为气象场 $X_{m{\times}n}$ 的空间函数</label></p>
+<p><label style="color:blue">那么，气象场 $X_{m{\times}n}$ 的时间函数 $Z_{m{\times}n} &#x3D; V_{m{\times}m}^T{\times}X_{m{\times}n}$</label></p>
 <p>对应的 $Z_{m{\times}n}$ 每行数据就是对应每个特征向量的时间系数，<label style="color:red">第一行就是第一个EOF模态的时间系数</label>，其他类推</p>
 <p>这样，我们就将 $X_{m{\times}n}$ 分解成了空间函数 $V_{m{\times}m}$ 和时间函数 $Z_{m{\times}n}$ 的乘积</p>
 <p>此时，$V_{m{\times}m}$ 满足</p>
@@ -88,7 +88,15 @@
 <img src="EOF14.png" width=300/>
 
 <p>也即<strong>“正交”</strong>的由来</p>
-]]></content>
+<p>对于$X \approx \hat{X} &#x3D; V_{m{\times}p} \times Z_{p{\times}n}$, $\hat{X}$为拟合场</p>
+<p>可以证明其误差为</p>
+<img src="EOF15.png" width=300/>
+
+<p>第i个特征向量对 $X_{m{\times}n}$ 变量场的贡献率</p>
+<img src="EOF16.png" width=200/>
+
+<p>前p个特征向量对 $X_{m{\times}n}$ 变量场的贡献率</p>
+<img src="EOF17.png" width=200/>]]></content>
       <categories>
         <category>统计学</category>
       </categories>
