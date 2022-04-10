@@ -1,68 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>提取中国省/市/县shp文件</title>
+    <url>/2022/04/04/2022-04-04-shapefile/</url>
+    <content><![CDATA[<h2
+id="今天跟同学讨论提取中国各省的shp文件时总结了两种方法">今天跟同学讨论提取中国各省的shp文件时总结了两种方法</h2>
+<h3
+id="使用meteoinfo软件提取shp文件">1.使用MeteoInfo软件提取shp文件</h3>
+<p>首先在<a href="http://www.gadm.org/">地理信息网</a>下载所需底图文件.
+（PS: 我测试多次都无法直接下载，建议从<a
+href="http://bbs.06climate.com/forum.php?mod=viewthread&amp;tid=22156">气象家园</a>下载）</p>
+<p>接下来在<a href="http://meteothink.org/">MeteoInfo</a>中打开
+<strong>bou2_4l.shp</strong> 和 <strong>BOUNT_ploy.shp</strong> 文件
+<img src="/2022/04/04/2022-04-04-shapefile/MeteoInfo1.png" class=""> <span id="more"></span> 为了方便区分各省，将
+<strong>bou2_4l.shp</strong> 的线条设置为红色并应用 <img src="/2022/04/04/2022-04-04-shapefile/MeteoInfo2.png" class=""></p>
+<p>接下来在左侧 <strong>Map Frame</strong> 中选中
+<strong>BOUNT_ploy.shp</strong> , 点击工具栏中的
+<strong>“要素属性”</strong>工具
+选中待提取省份的任意区域，以<strong>江苏省</strong>为例，查询到其<strong>SH2</strong>值为32
+<img src="/2022/04/04/2022-04-04-shapefile/MeteoInfo3.png" class=""></p>
+<p>点击 <strong>"选择-通过属性数据选择"</strong> 在下方文字框中输入
+<strong>SH2 = "32"</strong> （也可以从面板操作）,并点击
+<strong>select</strong> 按钮(可以勾选 Only selection visible
+选项，将未选中的地区mask掉) <img src="/2022/04/04/2022-04-04-shapefile/MeteoInfo4.png" class=""></p>
+<p>最后点击 <strong>"工具-输出地图数据"</strong> <strong>Map
+Layer</strong>选择<strong>BOUNT_ploy.shp</strong>，<strong>Output
+Format</strong>选择<strong>Shape File</strong>然后输出文件
+这样我们就得到了<strong>江苏省</strong>的shp文件 <img src="/2022/04/04/2022-04-04-shapefile/MeteoInfo5.png" class=""></p>
+<h3 id="使用网站快速导出">2.使用网站快速导出</h3>
+<p>打开<a
+href="http://datav.aliyun.com/portal/school/atlas/area_selector">阿里云数据可视化平台</a>,选择需要导出shp文件的省份，并下载<strong>json</strong>文件
+<img src="/2022/04/04/2022-04-04-shapefile/WayTwo1.png" class=""></p>
+<p>进入<a
+href="https://mapshaper.org/">Mapshaper</a>网站，导入刚才下载的<strong>json</strong>文件，点击右上角<strong>Export</strong>，选择<strong>File
+Format</strong>为<strong>Shape
+File</strong>，点击<strong>Export</strong>输出
+这样我们就得到了<strong>对应省份</strong>的shp文件 <img src="/2022/04/04/2022-04-04-shapefile/WayTwo2.png" class=""></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>shp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>EOF分析（PCA主成分分析）</title>
     <url>/2022/04/06/2022-04-06-EOF/</url>
-    <content><![CDATA[<h2 id="1-详细介绍EOF分析方法（也称PCA主成分分析）"><a href="#1-详细介绍EOF分析方法（也称PCA主成分分析）" class="headerlink" title="1.详细介绍EOF分析方法（也称PCA主成分分析）"></a>1.详细介绍EOF分析方法（也称PCA主成分分析）</h2><p>经验正交函数（Empirical Orthogonal Functions，EOFs）方法最早是由统计学家Pearson在1902年提出的，之后由Lorenz（1956）引入气象问题分析当中。机器学习领域常称作主成分分析（Principal Component Analysis，PCA）。</p>
-<p>EOF分析是将一个气象场分解为一个空间函数和一个时间函数的乘积，即 <strong>X &#x3D; VZ</strong> 的形式<br>其中，<strong>X</strong> 是气象场，<strong>V</strong> 是空间函数，<strong>Z</strong> 是时间函数</p>
-<span id="more"></span>
-<p>如果我们将一个气象场的多次观测值记为</p>
-<img src="EOF1.png" width=256/>
-
-<p>其中，下标 <strong>m</strong> 表示不同站点或不同格点，下标 <strong>n</strong> 表示时间<br>那么存在这样一个时间函数 <strong>V</strong> 和空间函数 <strong>Z</strong> </p>
-<img src="EOF2.png" width=256/>
-<img src="EOF3.png" width=256/>
-
-<p>使得 <strong>X &#x3D; VZ</strong>， 即</p>
-<img src="EOF4.png" width=400/>
-
-<p>其中 <em><strong>i &#x3D; 1,2,…,m</strong></em> <em><strong>t &#x3D; 1,2,…,n</strong></em> 表示变量场中第 <em><strong>i</strong></em> 个格点上的第 <em><strong>t</strong></em> 次观测值，可以看做是p个空间函数 $v_{ik}$ 和时间函数 $z_{ki}$ 的线性组合</p>
+    <content><![CDATA[<h2
+id="详细介绍eof分析方法也称pca主成分分析">1.详细介绍EOF分析方法（也称PCA主成分分析）</h2>
+<p>经验正交函数（Empirical Orthogonal
+Functions，EOFs）方法最早是由统计学家Pearson在1902年提出的，之后由Lorenz（1956）引入气象问题分析当中。机器学习领域常称作主成分分析（Principal
+Component Analysis，PCA）。</p>
+<p>EOF分析有以下优点：</p>
+<ol type="1">
+<li>没有固定的函数;</li>
+<li>能在有限区域对不规则分布的站点进行分解;</li>
+<li>展开收敛快，很容易将变量场的信息集中在几个模态上;</li>
+<li>分离出的空间结构具有一定的物理意义;</li>
+</ol>
+<p>EOF分析是将一个气象场分解为一个空间函数和一个时间函数的乘积，即
+<strong>X = VZ</strong> 的形式</p>
+<p>其中，<strong>X</strong> 是气象场，<strong>V</strong>
+是空间函数，<strong>Z</strong> 是时间函数 <span id="more"></span>
+如果我们将一个气象场的多次观测值记为</p>
+<p><img src="EOF1.png" width=256/></p>
+<p>其中，下标 <strong>m</strong> 表示不同站点或不同格点，下标
+<strong>n</strong> 表示时间</p>
+<p>那么存在这样一个时间函数 <strong>V</strong> 和空间函数
+<strong>Z</strong></p>
+<p><img src="EOF2.png" width=256/> <img src="EOF3.png" width=256/></p>
+<p>使得 <strong>X = VZ</strong>， 即</p>
+<p><img src="EOF4.png" width=400/></p>
+<p>其中 <strong><em>i = 1,2,...,m</em></strong> <strong><em>t =
+1,2,...,n</em></strong> 表示变量场中第 <strong><em>i</em></strong>
+个格点上的第 <strong><em>t</em></strong> 次观测值，可以看做是p个空间函数
+<span class="math inline">\(v_{ik}\)</span> 和时间函数 <span
+class="math inline">\(z_{ki}\)</span> 的线性组合</p>
 <p>因此 <strong>t</strong> 时刻的空间场可以表示为</p>
-<img src="EOF5.png" width=400/>
-
+<p><img src="EOF5.png" width=400/></p>
 <p>或者</p>
-<img src="EOF6.png" width=400/>
-
+<p><img src="EOF6.png" width=400/></p>
 <p>其中</p>
-<img src="EOF7.png" width=300/>
-
+<p><img src="EOF7.png" width=300/></p>
 <p>是第 <strong>j</strong> 个典型场，如果令</p>
-<img src="EOF8.png" width=300/>
-
+<p><img src="EOF8.png" width=300/></p>
 <p>那么我们就得到气象场的表达式为</p>
-<img src="EOF9.png" width=500/>
-
-<p>其中 $V_j$ 就称为 <strong>X</strong> 的EOF第 <strong>j</strong> 模态，$Z_j$ 就称为第 <strong>j</strong> 模态的时间序列</p>
-<h2 id="2-EOF分解的计算"><a href="#2-EOF分解的计算" class="headerlink" title="2.EOF分解的计算"></a>2.EOF分解的计算</h2><p>我们知道 $XX^T &#x3D; VZZ^TV^T$</p>
-<p>令 $A &#x3D; XX^T$</p>
-<p>显然矩阵 $A_{m{\times}m}$ 是一个实对称矩阵，由实对称矩阵的性质， $A_{m{\times}m}$ 可被正交相似对角化</p>
-<p>即存在正交矩阵 $P_{m{\times}m}$ 使得 $P^TAP &#x3D; \Lambda$, 其中 $\Lambda_{m{\times}m}$ 为矩阵 $X_{m{\times}n}$ 特征值组成的对角矩阵</p>
-<img src="EOF12.png" width=300/>
-
-<p>计算矩阵 $A_{m{\times}m}$ 的特征值 $\lambda_{1,…,m}$ 以及特征向量 $V_{m{\times}m}$</p>
-<p>将特征向量 $V_{m{\times}m}$ 按特征值从大到小排序，第一个特征向量，也即 $V_{m{\times}m}$ 的第1列为<label style="color:red">第1个EOF模态</label></p>
-<p>以此类推，第 <em><strong>2,3,…,p</strong></em> 列对应<label style="color:red">第p个EOF模态</label></p>
-<p><label style="color:blue">我们将特征向量 $V_{m{\times}m}$ 定义为气象场 $X_{m{\times}n}$ 的空间函数</label></p>
-<p><label style="color:blue">那么，气象场 $X_{m{\times}n}$ 的时间函数 $Z_{m{\times}n} &#x3D; V_{m{\times}m}^T{\times}X_{m{\times}n}$</label></p>
-<p>对应的 $Z_{m{\times}n}$ 每行数据就是对应每个特征向量的时间系数，<label style="color:red">第一行就是第一个EOF模态的时间系数</label>，其他类推</p>
-<p>这样，我们就将 $X_{m{\times}n}$ 分解成了空间函数 $V_{m{\times}m}$ 和时间函数 $Z_{m{\times}n}$ 的乘积</p>
-<p>此时，$V_{m{\times}m}$ 满足</p>
-<img src="EOF13.png" width=300/>
-
-<p>$Z_{m{\times}n}$ 满足</p>
-<img src="EOF14.png" width=300/>
-
+<p><img src="EOF9.png" width=500/></p>
+<p>其中 <span class="math inline">\(V_j\)</span> 就称为
+<strong>X</strong> 的EOF第 <strong>j</strong> 模态，<span
+class="math inline">\(Z_j\)</span> 就称为第 <strong>j</strong>
+模态的时间序列</p>
+<h2 id="eof分解的计算">2.EOF分解的计算</h2>
+<p>我们知道 <span class="math inline">\(XX^T = VZZ^TV^T\)</span></p>
+<p>令 <span class="math inline">\(A = XX^T\)</span></p>
+<p>显然矩阵 <span class="math inline">\(A_{m{\times}m}\)</span>
+是一个实对称矩阵，由实对称矩阵的性质， <span
+class="math inline">\(A_{m{\times}m}\)</span> 可被正交相似对角化</p>
+<p>即存在正交矩阵 <span class="math inline">\(P_{m{\times}m}\)</span>
+使得 <span class="math inline">\(P^TAP = \Lambda\)</span>, 其中 <span
+class="math inline">\(\Lambda_{m{\times}m}\)</span> 为矩阵 <span
+class="math inline">\(X_{m{\times}n}\)</span> 特征值组成的对角矩阵</p>
+<p><img src="EOF12.png" width=300/></p>
+<p>计算矩阵 <span class="math inline">\(A_{m{\times}m}\)</span> 的特征值
+<span class="math inline">\(\lambda_{1,...,m}\)</span> 以及特征向量
+<span class="math inline">\(V_{m{\times}m}\)</span></p>
+<p>将特征向量 <span class="math inline">\(V_{m{\times}m}\)</span>
+按特征值从大到小排序，第一个特征向量，</p>
+<p><label style="color:red">也即 <span
+class="math inline">\(V_{m{\times}m}\)</span>
+的第1列为第1个EOF模态，其他类推 </label></p>
+<p><label style="color:blue">我们将特征向量 <span
+class="math inline">\(V_{m{\times}m}\)</span> 定义为气象场 <span
+class="math inline">\(X_{m{\times}n}\)</span> 的空间函数</label></p>
+<p><label style="color:blue">那么，气象场 <span
+class="math inline">\(X_{m{\times}n}\)</span> 的时间函数 <span
+class="math inline">\(Z_{m{\times}n} =
+V_{m{\times}m}^T{\times}X_{m{\times}n}\)</span></label></p>
+<p><label style="color:red">对应的 <span
+class="math inline">\(Z_{m{\times}n}\)</span>
+每行数据就是对应每个特征向量的时间系数，第一行就是第一个EOF模态的时间系数，其他类推</label></p>
+<p>这样，我们就将 <span class="math inline">\(X_{m{\times}n}\)</span>
+分解成了空间函数 <span class="math inline">\(V_{m{\times}m}\)</span>
+和时间函数 <span class="math inline">\(Z_{m{\times}n}\)</span>
+的乘积</p>
+<p>此时，<span class="math inline">\(V_{m{\times}m}\)</span> 满足</p>
+<p><img src="EOF13.png" width=300/></p>
+<p><span class="math inline">\(Z_{m{\times}n}\)</span> 满足</p>
+<p><img src="EOF14.png" width=300/></p>
 <p>也即<strong>“正交”</strong>的由来</p>
-<p>对于$X \approx \hat{X} &#x3D; V_{m{\times}p} \times Z_{p{\times}n}$</p>
-<p>$\hat{X}$为拟合场</p>
+<p>对于<span class="math inline">\(X \approx \hat{X} = V_{m{\times}p}
+\times Z_{p{\times}n}\)</span></p>
+<p><span class="math inline">\(\hat{X}\)</span>为拟合场</p>
 <p>可以证明其误差为</p>
-<img src="EOF15.png" width=300/>
-
-<p>第i个特征向量对 $X_{m{\times}n}$ 变量场的贡献率</p>
-<img src="EOF16.png" width=200/>
-
-<p>前p个特征向量对 $X_{m{\times}n}$ 变量场的贡献率</p>
-<img src="EOF17.png" width=200/>]]></content>
+<p><img src="EOF15.png" width=300/></p>
+<p>第i个特征向量对 <span class="math inline">\(X_{m{\times}n}\)</span>
+变量场的贡献率</p>
+<p><img src="EOF16.png" width=200/></p>
+<p>前p个特征向量对 <span class="math inline">\(X_{m{\times}n}\)</span>
+变量场的贡献率</p>
+<p><img src="EOF17.png" width=200/></p>
+]]></content>
       <categories>
         <category>统计学</category>
       </categories>
@@ -71,34 +149,99 @@
       </tags>
   </entry>
   <entry>
-    <title>提取中国省/市/县shp文件</title>
-    <url>/2022/04/04/2022-04-04-shapefile/</url>
-    <content><![CDATA[<h2 id="今天跟同学讨论提取中国各省的shp文件时总结了两种方法"><a href="#今天跟同学讨论提取中国各省的shp文件时总结了两种方法" class="headerlink" title="今天跟同学讨论提取中国各省的shp文件时总结了两种方法"></a>今天跟同学讨论提取中国各省的shp文件时总结了两种方法</h2><h3 id="1-使用MeteoInfo软件提取shp文件"><a href="#1-使用MeteoInfo软件提取shp文件" class="headerlink" title="1.使用MeteoInfo软件提取shp文件"></a>1.使用MeteoInfo软件提取shp文件</h3><p>首先在<a href="http://www.gadm.org/">地理信息网</a>下载所需底图文件. （PS: 我测试多次都无法直接下载，建议从<a href="http://bbs.06climate.com/forum.php?mod=viewthread&tid=22156">气象家园</a>下载）</p>
-<p>接下来在<a href="http://meteothink.org/">MeteoInfo</a>中打开 <strong>bou2_4l.shp</strong> 和 <strong>BOUNT_ploy.shp</strong> 文件</p>
-<img src="/2022/04/04/2022-04-04-shapefile/MeteoInfo1.png" class="">
-<span id="more"></span>
-<p>为了方便区分各省，将 <strong>bou2_4l.shp</strong> 的线条设置为红色并应用</p>
-<img src="/2022/04/04/2022-04-04-shapefile/MeteoInfo2.png" class="">
-
-<p>接下来在左侧 <strong>Map Frame</strong> 中选中 <strong>BOUNT_ploy.shp</strong> , 点击工具栏中的 <strong>“要素属性”</strong>工具<br>选中待提取省份的任意区域，以<strong>江苏省</strong>为例，查询到其<strong>SH2</strong>值为32</p>
-<img src="/2022/04/04/2022-04-04-shapefile/MeteoInfo3.png" class="">
-
-<p>点击 <strong>“选择-通过属性数据选择”</strong> 在下方文字框中输入 <strong>SH2 &#x3D; “32”</strong> （也可以从面板操作）,并点击 <strong>select</strong> 按钮(可以勾选 Only selection visible 选项，将未选中的地区mask掉)</p>
-<img src="/2022/04/04/2022-04-04-shapefile/MeteoInfo4.png" class="">
-
-<p>最后点击 <strong>“工具-输出地图数据”</strong>  <strong>Map Layer</strong>选择<strong>BOUNT_ploy.shp</strong>，<strong>Output Format</strong>选择<strong>Shape File</strong>然后输出文件<br>这样我们就得到了<strong>江苏省</strong>的shp文件</p>
-<img src="/2022/04/04/2022-04-04-shapefile/MeteoInfo5.png" class="">
-
-<h3 id="2-使用网站快速导出"><a href="#2-使用网站快速导出" class="headerlink" title="2.使用网站快速导出"></a>2.使用网站快速导出</h3><p>打开<a href="http://datav.aliyun.com/portal/school/atlas/area_selector">阿里云数据可视化平台</a>,选择需要导出shp文件的省份，并下载<strong>json</strong>文件</p>
-<img src="/2022/04/04/2022-04-04-shapefile/WayTwo1.png" class="">
-
-<p>进入<a href="https://mapshaper.org/">Mapshaper</a>网站，导入刚才下载的<strong>json</strong>文件，点击右上角<strong>Export</strong>，选择<strong>File Format</strong>为<strong>Shape File</strong>，点击<strong>Export</strong>输出<br>这样我们就得到了<strong>对应省份</strong>的shp文件</p>
-<img src="/2022/04/04/2022-04-04-shapefile/WayTwo2.png" class="">]]></content>
+    <title>时间扩展EOF分析(TE-EOF)</title>
+    <url>/2022/04/10/2022-04-10-TEEOF/</url>
+    <content><![CDATA[<h2 id="什么是te-eof">1.什么是TE-EOF？</h2>
+<p>时间扩展EOF，也称扩展EOF(EEOF)，是Weare在1982年提出的一种EOF方法。</p>
+<p>传统的EOF方法中，将变量场表示为时间函数和空间函数的乘积。</p>
+<p>关于EOF的介绍请查看我的另一篇文章：<a
+href="https://syqia.github.io/2022/04/06/2022-04-06-EOF/">点击跳转</a></p>
+<p>但这样做的缺点是没有考虑地球物理场在时间和空间上的相关性，而地球物理场在时间和空间上往往有十分显著的相关性。</p>
+<p>TE-EOF利用了地球物理场在空间和时间上往往具有显著相关性的事实，根据函数来扩展数据集，这些函数是时间点序列的数据集的“最佳”表示。
+<span id="more"></span></p>
+<h2 id="te-eof的计算">2.TE-EOF的计算</h2>
+<p>例如，如果考虑连续三个时间增量的事件</p>
+<center>
+<span class="math inline">\(\vec{X}_{t,t+1,t+2} = VZ + E_{t,t+1,t+2}
+\quad where \quad t = 1,...,N\)</span>
+</center>
+其中
+<center>
+<span class="math inline">\(\vec{X}_{t,t+1,t+2} = [X_{1,t}...X_{M,t}
+\quad X_{1,t+1}...X_{M,t+1} \quad X_{1,t+1}...X_{M,t+2}]^T\)</span>
+</center>
+<p><span class="math inline">\(V\)</span> 为空间函数，<span
+class="math inline">\(Z\)</span> 为时间函数，<span
+class="math inline">\(E\)</span> 为误差，<span
+class="math inline">\(N\)</span> 为时间长度，<span
+class="math inline">\(M\)</span> 为格点数</p>
+<p>和传统方法一样，我们要求均方误差最小。</p>
+<p>如果假设 <span class="math inline">\(V\)</span> 是所有可用数据 <span
+class="math inline">\(X\)</span>
+的线性组合，那么这个问题在数学上也是可以处理的。也就是说,</p>
+<center>
+<span class="math inline">\(V = XZ^T\)</span>
+</center>
+<p>构建如下变量场 <span
+class="math inline">\(X_{3M{\times}N-2}\)</span></p>
+<center>
+<span
+class="math inline">\(X_{3M{\times}N-2}=\left(  \begin{array}{cccc}  X_{1,1}
+&amp; X_{1,2} &amp; \cdots &amp; X_{1,N-2}\\  \vdots &amp; \vdots &amp;
+&amp; \vdots \\  X_{M,1} &amp; X_{M,2} &amp; \cdots &amp;
+X_{N,N-2}\\  X_{1,2} &amp; X_{1,3} &amp; \cdots &amp;
+X_{1,N-1}\\  \vdots &amp; \vdots &amp; &amp; \vdots \\  X_{1,3} &amp;
+X_{1,4} &amp; \cdots &amp; X_{1,N} \\  \vdots &amp; \vdots &amp; &amp;
+\vdots \\  X_{M,3} &amp; X_{M,3} &amp; \cdots &amp; X_{1,N}
+\\  \end{array} \right)\)</span>
+</center>
+<p>与EOF类似，令 <span class="math inline">\(A = XX^T\)</span></p>
+<p>计算矩阵 <span class="math inline">\(A_{3M{\times}3M}\)</span>
+的特征值 <span class="math inline">\(\lambda_{1,...,3M}\)</span>
+以及特征向量 <span class="math inline">\(V_{3M{\times}3M}\)</span></p>
+<p>将特征向量 <span class="math inline">\(V_{3M{\times}3M}\)</span>
+按特征值从大到小排序，第一个特征向量，</p>
+<p><label style="color:red">也即 <span
+class="math inline">\(V_{3M{\times}3M}\)</span> 的第 <span
+class="math inline">\(1\)</span> 列为第 <span
+class="math inline">\(1\)</span> 个TE-EOF模态</label></p>
+<p><label style="color:blue">那么，气象场 <span
+class="math inline">\(X\)</span> 的时间函数 <span
+class="math inline">\(Z_{3M{\times}N-2} = V^TX\)</span></label></p>
+<p><label style="color:red">对应的 <span
+class="math inline">\(Z_{3M{\times}N-2}\)</span>
+每行数据就是对应每个特征向量的时间系数，第 <span
+class="math inline">\(1\)</span> 行就是第 <span
+class="math inline">\(1\)</span> 个EOF模态的时间系数</label></p>
+<p><label style="color:blue">显然，每个TE-EOF模态都包含了 <span
+class="math inline">\([t,t+1,t+2]\)</span>
+三个不同时刻相同范围的变量场，他们使用相同的时间函数</label></p>
+<p><label style="color:blue">由于时间函数的大小是 <span
+class="math inline">\(3M{\times}N-2\)</span>
+的，因此会丢失最后两个时刻的数据</label></p>
+<h3
+id="在te-eof的分析中可以使用更多的时刻进行计算如-tt1t2t3t4">在TE-EOF的分析中，可以使用更多的时刻进行计算，如
+<span class="math inline">\([t,t+1,t+2,t+3,t+4]\)</span></h3>
+<h3
+id="此时每个空间向量包含-tt1t2t3t4-五个不同时刻相同范围的变量场">此时，每个空间向量包含
+<span class="math inline">\([t,t+1,t+2,t+3,t+4]\)</span>
+五个不同时刻相同范围的变量场</h3>
+<h3
+id="同时会丢失四个时刻的数据计算-p-个时刻则会丢失-p-1-个时刻的数据">同时，会丢失四个时刻的数据；计算
+<span class="math inline">\(P\)</span> 个时刻，则会丢失 <span
+class="math inline">\(P-1\)</span> 个时刻的数据</h3>
+<h3
+id="此外时刻的选择可以是不连续的如-tt2t4tt5t10">此外，时刻的选择可以是不连续的，如
+<span class="math inline">\([t,t+2,t+4]\)</span>、<span
+class="math inline">\([t,t+5,t+10]\)</span></h3>
+<h3
+id="选择不连续的时刻进行计算可以在拉长时间尺度的同时减少计算量">选择不连续的时刻进行计算可以在拉长时间尺度的同时减少计算量</h3>
+]]></content>
       <categories>
-        <category>工具</category>
+        <category>统计学</category>
       </categories>
       <tags>
-        <tag>shp</tag>
+        <tag>TE-EOF</tag>
       </tags>
   </entry>
 </search>
