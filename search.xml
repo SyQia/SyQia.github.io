@@ -1,50 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>提取中国省/市/县shp文件</title>
-    <url>/2022/04/04/2022-04-04-shapefile/</url>
-    <content><![CDATA[<h2
-id="今天跟同学讨论提取中国各省的shp文件时总结了两种方法">今天跟同学讨论提取中国各省的shp文件时总结了两种方法</h2>
-<h3
-id="使用meteoinfo软件提取shp文件">1.使用MeteoInfo软件提取shp文件</h3>
-<p>首先在<a href="http://www.gadm.org/">地理信息网</a>下载所需底图文件.
-（PS: 我测试多次都无法直接下载，建议从<a
-href="http://bbs.06climate.com/forum.php?mod=viewthread&amp;tid=22156">气象家园</a>下载）</p>
-<p>接下来在<a href="http://meteothink.org/">MeteoInfo</a>中打开
-<strong>bou2_4l.shp</strong> 和 <strong>BOUNT_ploy.shp</strong> 文件
-<img src="/2022/04/04/2022-04-04-shapefile/MeteoInfo1.png" class=""> <span id="more"></span> 为了方便区分各省，将
-<strong>bou2_4l.shp</strong> 的线条设置为红色并应用 <img src="/2022/04/04/2022-04-04-shapefile/MeteoInfo2.png" class=""></p>
-<p>接下来在左侧 <strong>Map Frame</strong> 中选中
-<strong>BOUNT_ploy.shp</strong> , 点击工具栏中的
-<strong>“要素属性”</strong>工具
-选中待提取省份的任意区域，以<strong>江苏省</strong>为例，查询到其<strong>SH2</strong>值为32
-<img src="/2022/04/04/2022-04-04-shapefile/MeteoInfo3.png" class=""></p>
-<p>点击 <strong>"选择-通过属性数据选择"</strong> 在下方文字框中输入
-<strong>SH2 = "32"</strong> （也可以从面板操作）,并点击
-<strong>select</strong> 按钮(可以勾选 Only selection visible
-选项，将未选中的地区mask掉) <img src="/2022/04/04/2022-04-04-shapefile/MeteoInfo4.png" class=""></p>
-<p>最后点击 <strong>"工具-输出地图数据"</strong> <strong>Map
-Layer</strong>选择<strong>BOUNT_ploy.shp</strong>，<strong>Output
-Format</strong>选择<strong>Shape File</strong>然后输出文件
-这样我们就得到了<strong>江苏省</strong>的shp文件 <img src="/2022/04/04/2022-04-04-shapefile/MeteoInfo5.png" class=""></p>
-<h3 id="使用网站快速导出">2.使用网站快速导出</h3>
-<p>打开<a
-href="http://datav.aliyun.com/portal/school/atlas/area_selector">阿里云数据可视化平台</a>,选择需要导出shp文件的省份，并下载<strong>json</strong>文件
-<img src="/2022/04/04/2022-04-04-shapefile/WayTwo1.png" class=""></p>
-<p>进入<a
-href="https://mapshaper.org/">Mapshaper</a>网站，导入刚才下载的<strong>json</strong>文件，点击右上角<strong>Export</strong>，选择<strong>File
-Format</strong>为<strong>Shape
-File</strong>，点击<strong>Export</strong>输出
-这样我们就得到了<strong>对应省份</strong>的shp文件 <img src="/2022/04/04/2022-04-04-shapefile/WayTwo2.png" class=""></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>shp</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>EOF分析（PCA主成分分析）</title>
     <url>/2022/04/06/2022-04-06-EOF/</url>
     <content><![CDATA[<h2
@@ -146,6 +102,50 @@ class="math inline">\(Z_{m{\times}n}\)</span>
       </categories>
       <tags>
         <tag>EOF</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>提取中国省/市/县shp文件</title>
+    <url>/2022/04/04/2022-04-04-shapefile/</url>
+    <content><![CDATA[<h2
+id="今天跟同学讨论提取中国各省的shp文件时总结了两种方法">今天跟同学讨论提取中国各省的shp文件时总结了两种方法</h2>
+<h3
+id="使用meteoinfo软件提取shp文件">1.使用MeteoInfo软件提取shp文件</h3>
+<p>首先在<a href="http://www.gadm.org/">地理信息网</a>下载所需底图文件.
+（PS: 我测试多次都无法直接下载，建议从<a
+href="http://bbs.06climate.com/forum.php?mod=viewthread&amp;tid=22156">气象家园</a>下载）</p>
+<p>接下来在<a href="http://meteothink.org/">MeteoInfo</a>中打开
+<strong>bou2_4l.shp</strong> 和 <strong>BOUNT_ploy.shp</strong> 文件
+<img src="/2022/04/04/2022-04-04-shapefile/MeteoInfo1.png" class=""> <span id="more"></span> 为了方便区分各省，将
+<strong>bou2_4l.shp</strong> 的线条设置为红色并应用 <img src="/2022/04/04/2022-04-04-shapefile/MeteoInfo2.png" class=""></p>
+<p>接下来在左侧 <strong>Map Frame</strong> 中选中
+<strong>BOUNT_ploy.shp</strong> , 点击工具栏中的
+<strong>“要素属性”</strong>工具
+选中待提取省份的任意区域，以<strong>江苏省</strong>为例，查询到其<strong>SH2</strong>值为32
+<img src="/2022/04/04/2022-04-04-shapefile/MeteoInfo3.png" class=""></p>
+<p>点击 <strong>"选择-通过属性数据选择"</strong> 在下方文字框中输入
+<strong>SH2 = "32"</strong> （也可以从面板操作）,并点击
+<strong>select</strong> 按钮(可以勾选 Only selection visible
+选项，将未选中的地区mask掉) <img src="/2022/04/04/2022-04-04-shapefile/MeteoInfo4.png" class=""></p>
+<p>最后点击 <strong>"工具-输出地图数据"</strong> <strong>Map
+Layer</strong>选择<strong>BOUNT_ploy.shp</strong>，<strong>Output
+Format</strong>选择<strong>Shape File</strong>然后输出文件
+这样我们就得到了<strong>江苏省</strong>的shp文件 <img src="/2022/04/04/2022-04-04-shapefile/MeteoInfo5.png" class=""></p>
+<h3 id="使用网站快速导出">2.使用网站快速导出</h3>
+<p>打开<a
+href="http://datav.aliyun.com/portal/school/atlas/area_selector">阿里云数据可视化平台</a>,选择需要导出shp文件的省份，并下载<strong>json</strong>文件
+<img src="/2022/04/04/2022-04-04-shapefile/WayTwo1.png" class=""></p>
+<p>进入<a
+href="https://mapshaper.org/">Mapshaper</a>网站，导入刚才下载的<strong>json</strong>文件，点击右上角<strong>Export</strong>，选择<strong>File
+Format</strong>为<strong>Shape
+File</strong>，点击<strong>Export</strong>输出
+这样我们就得到了<strong>对应省份</strong>的shp文件 <img src="/2022/04/04/2022-04-04-shapefile/WayTwo2.png" class=""></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>shp</tag>
       </tags>
   </entry>
   <entry>
